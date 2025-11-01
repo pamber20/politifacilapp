@@ -184,15 +184,33 @@
             color: var(--text-dark);
         }
 
-        .hero-image {
+        .hero-video {
             flex: 1;
             text-align: center;
         }
 
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 8px;
+        .video-container {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
             box-shadow: var(--shadow);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 56, 147, 0.1) 0%, rgba(206, 17, 38, 0.05) 100%);
+            pointer-events: none;
         }
 
         /* Problem/Solution Section */
@@ -582,8 +600,15 @@
                 <p>PolitiFacilApp centraliza el control financiero, la estrategia territorial y la comunicación de tu campaña en Colombia. Cumple con la ley, optimiza tus recursos y conecta con tus votantes.</p>
                 <a href="https://wa.me/573008156382?text=Hola,%20estoy%20interesado%20en%20solicitar%20una%20demo%20de%20PolitiFacilApp" class="btn btn-yellow" target="_blank">Solicitar una Demo Gratuita</a>
             </div>
-            <div class="hero-image">
-                <img src="https://picsum.photos/600/400?random=1" alt="Dashboard de PolitiFacilApp">
+            <div class="hero-video">
+                <div class="video-container">
+                    <video autoplay muted loop playsinline>
+                        <source src="politifacilapp_centraliza_el_control_financiero_la_estrategia.mp4" type="video/mp4">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-graphic-designer-working-on-laptop-5085-large.webm" type="video/webm">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                    <div class="video-overlay"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -667,7 +692,7 @@
                 <p>En la política actual, la confianza es tu activo más valioso. Con PolitiFacilApp, puedes habilitar un portal público donde los ciudadanos y medios de comunicación pueden consultar los ingresos y gastos de tu campaña en tiempo real. Un diferenciador que demuestra tu compromiso con la honestidad.</p>
             </div>
             <div class="transparency-image">
-                <img src="https://picsum.photos/500/350?random=2" alt="Portal de Transparencia de PolitiFacilApp">
+                <img src="image1.png" alt="Portal de Transparencia de PolitiFacilApp">
             </div>
         </div>
     </section>
@@ -803,6 +828,26 @@
                     });
                 }
             });
+        });
+
+        // Video controls for better user experience
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.video-container video');
+            
+            // Pause video when it's not in viewport to save resources
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            if (video) {
+                observer.observe(video);
+            }
         });
     </script>
 </body>
