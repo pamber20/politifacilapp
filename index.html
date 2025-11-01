@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolitiFacilApp - La Estrategia Ganadora para tu Campaña Electoral</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lato:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #003893;
+            --secondary-red: #CE1126;
+            --secondary-yellow: #FCD116;
+            --text-dark: #343A40;
+            --bg-light: #F8F9FA;
+            --white: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #002b70;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-yellow {
+            background-color: var(--secondary-yellow);
+            color: var(--primary);
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-yellow:hover {
+            background-color: #f8c200;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--bg-light);
+            padding-top: 8rem;
+            padding-bottom: 5rem;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero h1 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Problem/Solution Section */
+        .problem-solution {
+            background-color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .problem-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .problem-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .trust-bar {
+            text-align: center;
+            padding: 1.5rem 0;
+            border-top: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
+            margin-top: 2rem;
+        }
+
+        .trust-bar p {
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: var(--bg-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Transparency Section */
+        .transparency {
+            background-color: var(--white);
+        }
+
+        .transparency-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .transparency-content {
+            flex: 1;
+        }
+
+        .transparency-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .transparency-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--bg-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 0.25rem;
+            color: var(--primary);
+        }
+
+        .testimonial-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background-color: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .cta h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta .btn {
+            background-color: var(--secondary-yellow);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .cta .btn:hover {
+            background-color: #f8c200;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .footer-description {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-yellow);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #555;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-container,
+            .transparency-container {
+                flex-direction: column;
+            }
+
+            .problems-grid,
+            .features-grid,
+            .testimonials-grid,
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background-color: var(--white);
+                width: 80%;
+                height: calc(100vh - 70px);
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+                padding: 2rem;
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu li {
+                margin: 0 0 1.5rem 0;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.75rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .problems-grid,
+            .features-grid,
+            .testimonials-grid,
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">PolitiFacilApp</a>
+            <button class="mobile-toggle" id="mobileToggle">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#features">Funcionalidades</a></li>
+                <li><a href="#transparency">Transparencia</a></li>
+                <li><a href="#testimonials">Testimonios</a></li>
+                <li><a href="https://wa.me/573008156382?text=Hola,%20estoy%20interesado%20en%20solicitar%20una%20demo%20de%20PolitiFacilApp" class="btn btn-yellow" target="_blank">Solicitar Demo</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>La Estrategia Ganadora para tu Campaña Electoral</h1>
+                <p>PolitiFacilApp centraliza el control financiero, la estrategia territorial y la comunicación de tu campaña en Colombia. Cumple con la ley, optimiza tus recursos y conecta con tus votantes.</p>
+                <a href="https://wa.me/573008156382?text=Hola,%20estoy%20interesado%20en%20solicitar%20una%20demo%20de%20PolitiFacilApp" class="btn btn-yellow" target="_blank">Solicitar una Demo Gratuita</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://picsum.photos/600/400?random=1" alt="Dashboard de PolitiFacilApp">
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="problem-solution">
+        <div class="container">
+            <div class="section-header">
+                <h2>¿Cansado del desorden en tu campaña?</h2>
+                <p>Las campañas políticas enfrentan riesgos normativos, fugas de presupuesto y decisiones a ciegas.</p>
+            </div>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">⚠️</div>
+                    <h3>Riesgo Normativo</h3>
+                    <p>Evita sanciones del CNE con alertas automáticas de topes de gastos y reportes listos para presentar.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">💰</div>
+                    <h3>Descontrol Financiero</h3>
+                    <p>Visualiza cada peso. Centraliza ingresos, gastos y presupuestos de líderes en un solo lugar.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🗺️</div>
+                    <h3>Estrategia Desconectada</h3>
+                    <p>Conecta tus finanzas con el territorio. Mide el costo por voto y optimiza la inversión en zonas clave.</p>
+                </div>
+            </div>
+            <div class="trust-bar">
+                <p>CON LA CONFIANZA DE CAMPAÑAS EN TODA COLOMBIA</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Una Plataforma, Todo el Control</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Control Financiero y CNE</h3>
+                    <p>Supervisa ingresos, gastos y topes en tiempo real. Genera reportes para "Cuentas Claras" con un solo clic.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Estrategia Territorial IA</h3>
+                    <p>Gestiona tus líderes, votantes y puestos de votación. Analiza el potencial electoral por zonas geográficas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Asesor Electoral en Línea</h3>
+                    <p>Resuelve tus dudas sobre la normativa electoral colombiana con nuestro asistente de IA entrenado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📢</div>
+                    <h3>Centro de Comunicaciones</h3>
+                    <p>Genera borradores para redes sociales y mensajes de difusión masiva con IA para mantener a tus votantes conectados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Monitoreo de Fake News</h3>
+                    <p>Detecta y gestiona la desinformación que afecta a tu campaña en tiempo real.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👁️</div>
+                    <h3>Portal de Transparencia</h3>
+                    <p>Activa un portal público para demostrar a los votantes el manejo honesto de los recursos de tu campaña.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transparency Section -->
+    <section class="transparency" id="transparency">
+        <div class="container transparency-container">
+            <div class="transparency-content">
+                <h2>Transparencia que Genera Confianza</h2>
+                <p>En la política actual, la confianza es tu activo más valioso. Con PolitiFacilApp, puedes habilitar un portal público donde los ciudadanos y medios de comunicación pueden consultar los ingresos y gastos de tu campaña en tiempo real. Un diferenciador que demuestra tu compromiso con la honestidad.</p>
+            </div>
+            <div class="transparency-image">
+                <img src="https://picsum.photos/500/350?random=2" alt="Portal de Transparencia de PolitiFacilApp">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lo que Dicen los Gerentes de Campaña</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"PolitiFacilApp transformó nuestro caos financiero en una estrategia clara. Las alertas de topes de gastos nos salvaron de posibles sanciones del CNE."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://picsum.photos/60/60?random=3" alt="Foto de perfil" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Gerente de Campaña</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"El portal de transparencia fue clave. Nos permitió comunicar honestidad y conectar genuinamente con los votantes."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://picsum.photos/60/60?random=4" alt="Foto de perfil" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>María González</h4>
+                            <p>Candidata a la Alcaldía</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Nunca había sido tan fácil consolidar reportes. La plataforma es intuitiva y el soporte técnico, excelente."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://picsum.photos/60/60?random=5" alt="Foto de perfil" class="testimonial-avatar">
+                        <div class="testimonial-info">
+                            <h4>Andrés López</h4>
+                            <p>Tesorero de Campaña</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>Digitaliza tu Campaña y Prepárate para Ganar</h2>
+            <p>No dejes la gestión de tu campaña al azar. Agenda una demostración personalizada y descubre cómo PolitiFacilApp puede llevarte a la victoria.</p>
+            <a href="https://wa.me/573008156382?text=Hola,%20estoy%20interesado%20en%20solicitar%20una%20demo%20de%20PolitiFacilApp" class="btn btn-yellow" target="_blank">Solicitar una Demo Gratuita</a>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/573008156382?text=Hola,%20estoy%20interesado%20en%20solicitar%20una%20demo%20de%20PolitiFacilApp" class="whatsapp-float" target="_blank">
+        <span>💬</span>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">PolitiFacilApp</a>
+                    <p class="footer-description">La plataforma integral para la gestión moderna de campañas políticas en Colombia.</p>
+                    <div class="social-links">
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                        <a href="https://twitter.com" target="_blank" aria-label="Twitter">Twitter</a>
+                        <a href="https://facebook.com" target="_blank" aria-label="Facebook">Facebook</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="#features">Funcionalidades</a></li>
+                        <li><a href="#transparency">Transparencia</a></li>
+                        <li><a href="#testimonials">Testimonios</a></li>
+                        <li><a href="https://wa.me/573008156382?text=Hola,%20estoy%20interesado%20en%20solicitar%20una%20demo%20de%20PolitiFacilApp" target="_blank">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#" target="_blank">Términos de Servicio</a></li>
+                        <li><a href="#" target="_blank">Política de Privacidad</a></li>
+                        <li><a href="#" target="_blank">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 PolitiFacilApp. Todos los derechos reservados. Hecho con 🇨🇴 en Colombia.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
